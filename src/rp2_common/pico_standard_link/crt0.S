@@ -248,12 +248,7 @@ platform_entry: // symbol for stack traces
     ldr r1, =exit
     blx r1
     // exit should not return.  If it does, hang the core.
-    // (fall thru into our hang _exit impl
-.weak _exit
-.type _exit,%function
-.thumb_func
-_exit:
-1: // separate label because _exit can be moved out of branch range
+1:
     bkpt #0
     b 1b
 
